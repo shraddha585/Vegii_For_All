@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>customer</title>
+    </head>
+    <style>
+    body{
+        margin: 0px;
+        padding: 0px;
+        background-color:rgb(184, 224, 246);
+        height: 620px;
+        border: 2px solid darkblue;
+    }
+    .nav{
+        position: relative;
+        height: 60px;
+        background-color: rgb(8, 92, 122);
+        color:azure;
+        border:2px solid black;
+    }
+    .nav ul{
+        display: flex;
+        list-style: none;
+    }
+    .nav li{
+        font-size: larger;
+        position: relative;
+        padding-left: 10px;
+    }
+    .flex{
+        display: flex;
+    }
+    .cus{
+        position: relative;
+        padding: 10px;
+        margin: 2px;
+        border:2px solid black;
+        background-color:   rgb(127, 185, 216);
+    }
+    #img-logo{
+                position: relative;
+                height: 50px;
+                width: 50px;
+                border: 1px solid black;
+                top:-8px;
+                right: 30px;
+            }
+    #flex{
+        display: flex;
+        flex-wrap: wrap;
+    }  
+    .v{
+        margin: 10px;
+        position: relative;
+        width: 185px;
+        height: 70px;
+        border: 1px solid darkblue;
+        background-color:  rgb(127, 185, 216);
+        text-align: center;
+        color: darkblue;
+    }    
+    #Area{
+        position: relative;
+        left: 1200px;
+        top: 0px;
+        width: 200px;
+        height: 50px;
+        border: 2px solid darkblue;
+        box-sizing: border-box;
+    } 
+    #button{
+        position: relative;
+        left: 700px;
+        top:-45px;
+        border: 2px solid darkblue;
+        width: 57px;
+    }
+    #Cust_Info{
+        position: relative;
+        padding-left: 500px;
+    }
+    .kg{
+        position: relative;
+        width: 50px;
+        height: 20px;
+        background-color: rgb(172, 202, 244);
+    }
+    #notification{
+    border:1px solid darkblue;
+    color: rgb(19, 6, 32);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 200;
+    font-size: larger;
+    }
+</style>
+    <body>
+        <nav class="nav">
+            <ul>
+             <li><img src="vegi logo.jpg" id="img-logo"></li>
+             <li ><a href="index.html" style="color: white;">Home</a></li>
+             <li id="Cust_Info"></li>
+            </ul>
+           </nav>
+           <div id="flex">
+           <div class="v">Tomato  <input type="checkbox" class="checkbox" value="Tomato"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Carrot  <input type="checkbox" class="checkbox" value="Carrot"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Cauliflower  <input type="checkbox" class="checkbox" value="Cauliflower"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Cabbage  <input type="checkbox" class="checkbox" value="Cabbage"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Garlic  <input type="checkbox" class="checkbox" value="Garlic"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Broccoli  <input type="checkbox" class="checkbox" value="Broccoli"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Beetroot  <input type="checkbox" class="checkbox" value="Beetroot"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Onion  <input type="checkbox" class="checkbox" value="Onion"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Capsicum  <input type="checkbox" class="checkbox" value="Capsicum"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Asparagus  <input type="checkbox" class="checkbox" value="Asparagus"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Spinach  <input type="checkbox" class="checkbox" value="Spinach"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Eggplant  <input type="checkbox" class="checkbox" value="Eggplant"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">White Eggplant  <input type="checkbox" class="checkbox" value="White Eggplant"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Potato  <input type="checkbox" class="checkbox" value="Potato"><input type="number" class="kg" min="1" placeholder="KG "></div>
+           <div class="v">Radish  <input type="checkbox" class="checkbox" value="Radish"><input type="number" class="kg" min="1" placeholder="KG "></div>
+           <div class="v">Green bean  <input type="checkbox" class="checkbox" value="Green bean"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Cucumber  <input type="checkbox" class="checkbox" value="Cucumber"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Lady's Fingers  <input type="checkbox" class="checkbox" value="Lady's Fingers"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Celeriac  <input type="checkbox" class="checkbox" value="Celeriac"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Thondekai  <input type="checkbox" class="checkbox" value="Thondekai"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Bottle Gourd  <input type="checkbox" class="checkbox" value="Bottle Gourd"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Pumpkin  <input type="checkbox" class="checkbox" value="Pumpkin"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Fenugreek Leaves <input type="checkbox" class="checkbox" value="Fenugreek Leaves"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Mustard Greens <input type="checkbox"class="checkbox" value="Mustard Greens"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">peas <input type="checkbox" class="checkbox" value="peas"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Lettuce <input type="checkbox" class="checkbox" value="Lettuce"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Curry Leaf<input type="checkbox" class="checkbox" value="Curry Leaf"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Green Chilli  <input type="checkbox" class="checkbox" value="Green Chilli"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Indian Gooseberry  <input type="checkbox" class="checkbox" value="Indian Gooseberry"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Jackfruit  <input type="checkbox" class="checkbox" value="Jackfruit"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Kidney beans  <input type="checkbox" class="checkbox" value="Kidney beans"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Red Chilli  <input type="checkbox" class="checkbox" value="Red Chilli"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Green Onion <input type="checkbox" class="checkbox" value="Green Onion"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Turmeric  <input type="checkbox" class="checkbox" value="Turmeric"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Mint <input type="checkbox" class="checkbox" value="Mint"><input type="number" class="kg" min="1" placeholder="KG "></div>
+           <div class="v">Corn  <input type="checkbox" class="checkbox" value="Corn"><input type="number" class="kg" min="1" placeholder="KG "></div>
+           <div class="v">Ivy Gourd  <input type="checkbox" class="checkbox" value="Ivy Gourd"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Chamadumpa <input type="checkbox" class="checkbox" value="Chamadumpa"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Snake Beans  <input type="checkbox" class="checkbox" value="Snake Beans"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Bitter Gourd <input type="checkbox" class="checkbox" value="Bitter Gourd"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Kale  <input type="checkbox" class="checkbox" value="Kale"><input type="number" min="1" class="kg" placeholder="KG "></div>
+           <div class="v">Swiss Chard  <input type="checkbox" class="checkbox" value="Swiss Chard"><input type="number" min="1" class="kg" placeholder="KG "></div>
+            </div>
+           </div>
+           <div>
+            <div id="notification">
+            </div>
+            <button id="ok" onclick="RemoveNotification()">OK</button>
+           <input type="text" id="Area" placeholder="Enter Your Area">
+           <div id="button"><button type="button" class="btn" onclick="data()">Sumbit</button></div>
+           </div>
+           <script src=" https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDxZVaI40aBOO30r-sR2RGd2DSn01t8PNw",
+    authDomain: "vegi-bc5a5.firebaseapp.com",
+    projectId: "vegi-bc5a5",
+    storageBucket: "vegi-bc5a5.appspot.com",
+    messagingSenderId: "316242938950",
+    appId: "1:316242938950:web:3764472a88decc9fd90e47"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+           <script src="script.js"></script>
+    </body>
+</html>

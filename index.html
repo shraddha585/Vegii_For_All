@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>LOGIN  PAGE</title>
+    </head>
+    <body>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <style>
+          body{
+            background-color: rgb(184, 224, 246);
+          }
+            #nav{
+                display: flex;
+                background-color: rgb(8, 92, 122);
+                border:2px solid black;
+                color: rgb(255, 255, 255);
+            }
+            .h{
+                position: relative;
+                left: 1000px;
+                padding-left: 20px;
+                font-size: larger;
+            }
+            #img-logo{
+                position: relative;
+                height: 50px;
+                width: 50px;
+                border: 1px solid black;
+                top: 2px;
+                right: 15px;
+            }
+            #i-back{
+              position: relative;
+              top: 3px;
+              height: 600px;
+              width: 500px;
+              border: 2px solid black;
+            }
+            #b{
+              display:flex ;
+            }
+            #i{
+              position: relative;
+              text-align: center;
+              border: 1px solid darkblue;
+              margin:4px ;
+            }
+            #a{
+              position: relative;
+              width: 200px;
+              height: 600px;
+              border: 1px solid darkblue;
+              margin: 4px;
+              font-family:Arial, Helvetica, sans-serif;
+            }
+            #a ul li{
+            position: relative;
+            padding-bottom: 20px;
+            }
+            .dropdown-item{
+              border:1px solid rgb(0, 0, 0);
+              margin: 1px;
+            }
+            .btn{
+              position: relative;
+              left:40px;
+              border: 2px solid black;
+            }
+            #logout{
+              position: relative;
+              left: 600px;
+              top: 30px;
+              font-size: large;
+            }
+            #inst{
+              position: relative;
+              width: 800px;
+              height: 560px;
+              border: 1px solid darkblue;
+              margin:4px ;
+            }
+            #inst li{
+              position: relative;
+              padding-bottom: 20px;
+              font-family:Arial, Helvetica, sans-serif;
+              font-size: larger;
+            }
+        </style>
+        <nav id="nav">
+            <li><img src="vegi logo.jpg" id="img-logo"></li>
+            <li class="nav-item dropdown h">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Login
+                </a>
+                <ul class="dropdown-menu" style="border:2px solid rgb(0, 0, 0)">
+                    <li><a class="dropdown-item" href="#">Login as a user</a>
+                      <form autocomplete="off" onsubmit="loginUser(event)">
+                  <li><a class="dropdown-item" href="#">Email</a>
+                <input type="email" style="margin: 2px;" id="UL_email" placeholder="Enter Email"></li>
+                  <li><a class="dropdown-item" href="#">Password</a>
+                <input type="password" style="margin: 2px;" id="UL_pass" placeholder="Enter Password"></li>
+                <button type="submit" class="btn" >Submit</button>
+                </form>
+
+                <form autocomplete="off" onsubmit="loginCustomer(event)">
+                <li><a class="dropdown-item" href="#">Login as a customer</a></li>
+                <li><a class="dropdown-item" href="#">Username</a>
+                    <input type="email" style="margin: 2px;" id="CL_email" placeholder="Enter Email"></li>
+                    <li ><a class="dropdown-item" href="#">Password</a>
+                    <input type="password" style="margin: 2px;"id="CL_pass" placeholder="Enter Password"></li>
+                 <button type="submit" class="btn">Submit</button>
+                </ul>
+              </form>
+              </li>
+
+              <li class="nav-item dropdown h">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  SignUp
+                </a>
+                <ul class="dropdown-menu" style="border:2px solid rgb(0, 0, 0)">
+                    <li><a class="dropdown-item" href="#">SignUp</a><li>
+                  <form autocomplete="off" onsubmit="signupUser(event)">    
+                  <li><a class="dropdown-item" href="#">email</a>
+                <input type="email" id="U_signemail" style="margin: 2px;" placeholder="Enter Email"></li>
+                  <li><a class="dropdown-item" href="#">Password</a>
+                <input type="password" id="U_signpassword" style="margin: 2px;" placeholder="Enter Password"></li>
+                <button type="submit" class="btn">Submit</button>
+              </form>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown h">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About Us
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">We are here to provide you best service</a>
+                      <li><a class="dropdown-item" href="#">Contact : VegiiForAll@gmail.com</a>
+                </ul>
+              </li>
+              <li onclick="logout()" id="logout">Logout</li>
+        </nav>
+        <div id="b"><img src="vegi back.jpg" id="i-back">
+         <div>
+            <h3 id="i">Instructions</h3>
+            <ul id="inst">
+              <li>SignUp first to use Vegii For All</li>
+              <li>Login as a Customer to Order Vegis from Vegitables seller near your area</li>
+              <li>If you are Customer then select Vegitables you want and select quantity in <b>KG</b></li>
+              <li>If you are Customer then do not forget to select your Area</li>
+              <li>After selection sumbit the order</li>
+              <li>You will got Notification after if any seller accept your order</li>
+              <li>Login as User to Sell your Vegitables to Customer</li>
+              <li>On your screen there orders with list of vegetables and area is also included</li>
+              <li>To accept the order click the checkbox and submit the form </li>
+              <li>After accepting order reach there as soon as possible</li>
+            </ul>
+         </div> 
+         <div id="a">
+          <ul>
+            <li>customer: who wants to purches vegitable from vegitable seller</li>
+            <li>User: who wants to sell his/her vegitable to customer</li>
+          </ul>
+         </div>
+        </div>
+        <script src=" https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDxZVaI40aBOO30r-sR2RGd2DSn01t8PNw",
+    authDomain: "vegi-bc5a5.firebaseapp.com",
+    projectId: "vegi-bc5a5",
+    storageBucket: "vegi-bc5a5.appspot.com",
+    messagingSenderId: "316242938950",
+    appId: "1:316242938950:web:3764472a88decc9fd90e47"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="firebaselogin.js"></script>
+    </body>
+</html>

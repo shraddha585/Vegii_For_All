@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>User</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+        padding: 0px;
+        background-color:rgb(184, 224, 246);;
+    }
+    .nav{
+        position: relative;
+        height: 60px;
+        background-color: rgb(8, 92, 122);
+        color:azure;
+        border:2px solid black;
+    }
+    .nav ul{
+        display: flex;
+        list-style: none;
+    }
+    .nav li{
+        font-size: larger;
+        position: relative;
+        padding-left: 10px;
+    }
+    .flex{
+        display: flex;
+    }
+    .cus{
+        position: relative;
+        padding: 10px;
+        margin: 2px;
+        border:2px solid black;
+        background-color:   rgb(127, 185, 216);
+    }
+    #img-logo{
+        position: relative;
+        height: 50px;
+        width: 50px;
+        border: 1px solid black;
+        top: -8px;
+        right: 30px;
+     }
+    #button{
+        position: relative;
+        left: 700px;
+        top:350px;
+        border: 2px solid darkblue;
+        width: 57px;
+    } 
+    #User_Info{
+        position: relative;
+        padding-left:500px;
+    }       
+</style>
+<body>
+  <nav class="nav">
+   <ul>
+    <li><img src="vegi logo.jpg" id="img-logo"></li>
+    <li ><a href="index.html" style="color: white;">Home</a></li>
+    <li id="User_Info"></li>
+   </ul>
+  </nav>
+  <div class="flex" id="display">
+  </div>
+  <div id="button"><button type="submit" class="btn" onclick="acceptOrder()">Sumbit</button></div>
+
+  <script src=" https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDxZVaI40aBOO30r-sR2RGd2DSn01t8PNw",
+    authDomain: "vegi-bc5a5.firebaseapp.com",
+    projectId: "vegi-bc5a5",
+    storageBucket: "vegi-bc5a5.appspot.com",
+    messagingSenderId: "316242938950",
+    appId: "1:316242938950:web:3764472a88decc9fd90e47"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var email = user.email;
+            document.getElementById("User_Info").textContent = email;
+        } else {
+            window.location.href = "login.html";
+        }
+    });
+});
+function displayData() {
+    const displayDiv = document.getElementById("display");
+    displayDiv.innerHTML = '';
+
+    db.collection("orders").get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const entry = doc.data();
+          const orderId = doc.id;
+          if (Array.isArray(entry.vegetables)) {
+            let vegetablesList = entry.vegetables.map(veg => {
+              return `<li>${veg.vegetable}: ${veg.quantity} KG</li>`;
+            }).join('');
+            const content = `
+              <div class="cus">
+                <h4 style="font-weight:normal;">Area: ${entry.area}</h4>
+                <h5 style="font-weight:normal; font-size:small; position:relative; border:1px solid;">Customer Email: ${entry.email}</h5>
+                <h4 style="font-weight:normal;">Vegetables Needed</h4>
+                <ul>${vegetablesList}</ul>
+               <input type="checkbox" class="checkbox" data-id="${orderId}" value="true">
+              </div>
+            `;
+            displayDiv.insertAdjacentHTML('beforeend', content);
+          } else {
+            console.error("Vegetables field is missing or not an array in document:", doc.id);
+          }
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching documents: ", error);
+      });
+  }
+  function acceptOrder(){
+    const checkboxes = document.querySelectorAll(".checkbox:checked");
+    firebase.auth().onAuthStateChanged(function(user){
+        if(user){
+            let acceptingUserEmail = user.email;
+            
+            checkboxes.forEach(checkbox => {
+                const orderId = checkbox.getAttribute("data-id");
+                
+                db.collection("orders").doc(orderId).delete({
+                    status: "accepted",
+                    acceptedBy: acceptingUserEmail
+                })
+                .then(() => {
+                    console.log(`Order ${orderId} updated successfully.`);
+                    checkbox.closest('.cus').remove();
+
+                    db.collection("notifications").add({
+                        email: checkbox.closest('.cus').querySelector('h5').textContent.replace('Customer Email: ', ''),
+                        message: `Your order has been accepted by ${acceptingUserEmail}.`,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    })
+                    .then(() => {
+                        console.log("Notification added successfully.");
+                        checkbox.closest('.cus').remove();
+                    })
+                    .catch((error) => {
+                        console.error("Error adding notification: ", error);
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+            });
+
+        } else {
+            alert("You need to be logged in to accept orders");
+            return;
+        }
+    });
+}
+
+
+        window.onload = displayData;
+  </script>
+</body>
+</html>
